@@ -1,11 +1,7 @@
-﻿
-
-
 ﻿FZ done  之前将廖雪峰的python3教程都看过，上传了代码以及学习文档供大家参考，难免有错误，欢迎交流。
 ZTJ done
-
 林晓民 python遗传算法+python学习总结。
-
-FZ done  之前将廖雪峰的python3教程都看过，上传了代码以及学习文档供大家参考，难免有错误，欢迎交流。
 WHB done	人生苦短，我用python
 赵雯倩 done
+mry done
+YLY done ...
