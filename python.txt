@@ -1,0 +1,228 @@
+第一章 python基础
+
+1.python可以直接处理的数据类型：
+        整数：10进制(1,100)、16进制(0x+...)(整数运算永远是精确的，包括除法)
+        浮点数：科学记数法（e代替10：1.23e9，浮点数运算有四舍五入的误差）
+   字符串：单引号或双引号括起来的文本（转义字符 \ :\n(换行 \t(制表符)  \\(\转义）r''(内部不转义)  '''...'''（表示多行内容）)
+   布尔值：True  False
+   空值: None表示，不是0
+   变量：用来指向数据（对象），动态语言：同一个变量可以反复赋值，而且可以是不同类型，
+   常量：不能变的变量，全部大写的变量名表示常量
+              python的除法： /：结果是浮点数
+                                      //：结果是整数
+2.字符编码
+  ASCII:一个字节 （8bite）
+  GB2312：中文编码
+  Unicode：两个字节 统一编码（一个字符编码时需要多个字节）
+  Utf-8：可变长编码 节约空间
+
+  计算机系统的编码方式：
+ 	记事本编辑：编辑（从文件读取的UTF-8字符被转换为Unicode字符到内存里）保存（Unicode转换为UTF-8保存到文件）
+	网页编辑：  服务器（把动态生成的Unicode内容转换为UTF-8再传输到浏览器）
+Python3 的字符串是Unicode编码 
+                  ord（）获取字符的整数表示
+                   chr（）函数把编码转换为对应的字符
+                   网络传输，保存磁盘，就需要把str变为以字节为单位的 bytes的数据类型（b“”） 以 Unicode表示的str通过encode（）方法编码为指定的bytes
+                   从网络或磁盘上读取了字节流，那么读到的数据就是bytes。要把bytes变为str，就需要用decode()（避免bytes中有一小部分无效字节，用errors="ignore"忽略错误的字节）
+                   避免混乱，一般用UTF-8编码进行str和bytes进行转换
+                   格式化输出字符串：
+                           %（%s用字符串代替 %d用整数替代 %f 用浮点数替代 %x用十六进制数）
+                           format()方法：会用传入的参数替换字符串内的占位符{0}、{1}
+
+
+python 有序的集合：
+	     list：可变有序列表(
+			    末尾追加元素:.append( )
+                                                    指定位置插入元素：.insert(索引号，插入内容)
+                                                    删除末尾元素：.pop( )
+			    删除指定位置元素：.pop(i)
+				)
+                      tuple：不可变列表(指向不变)，必须初始化（特殊，定义只有一个元素的tuple(1,)）
+python的功能：条件判断
+                        循环
+                        dict 键-值（查找方便，占用空间多）key必须不可变 （不能是list）
+                        set  无序无重复元素的集合 只有键，创建set，里的值是不能变得
+                             （[ ]）只是set的表现形式，并不是把list放入set中
+                               不可变对象：如 str
+                                tuple是不可变对象 (1, 2, 3) 可放入 dict list
+                                                            (1, [2, 3]) 内含list ：unhashable type: 'list' 不能可放入 dict list
+
+
+第二章 函数
+      函数名：指向一个函数对象的引用，可以把函数名赋给一个变量
+      定义函数：def 函数名(参数):
+		内容
+                                return ···     
+      导入函数：导入 abstest.py文件里的my_abs()的函数 from abstest import my_abs 
+      函数返回值：返回值是一个tuple
+      函数的参数：位置参数：调用函数时，传入的两个值按照位置顺序依次赋给参数x和n
+                          默认参数：简化函数的调用（注：1.必选参数在前，默认参数爱后2.默认参数必须指向不变对象）
+                                          解决连续调用，默认参数内容改变的问题（重要）
+                                                  默认参数用None（str）等不变对象来定义，在函数体内，用if条件对默认参数进行赋值
+                         可变参数：参数前面加*，参数接受的是一个tuple“a（）”
+                                         传参时，如果参数是一个list或tuple，
+                                                >>> nums = [1, 2, 3]
+                                                >>> calc(*nums)（将其内所有元素作为可变参数传入函数）
+                                          可变参数允许传入0个或任意个参数，这些参数在函数调用时自动组装为一个tuple
+                         关键字参数：允许传入0个或任意个含参数名的参数，这些参数在函数内部自动组装为一个dict
+                                            传参时，可以只传入必须参数，也可以传入任意个关键字参数
+                                                   >>> extra = {'city': 'Beijing', 'job': 'Engineer'}
+                                                   >>> person('Jack', 24, **extra)（** 把字典所有key-value用关键字参数传入函数的**kw参数，
+                                                                                                   kw获得一个dict的拷贝，对kw改动对函数外的extra没有影响）
+                        命名关键字参数：为了限制关键字参数的名字，eg 只接受 city和job作为关键字参数
+                                                  def person(name, age, *, city, job): （*后面的参数视为命名关键字参数）
+                                                  def person(name, age, *args, city, job):（如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*了）
+                                                  命名关键字参数必须传入参数名，这和位置参数不同。如果没有传入参数名，调用将报错
+                                                  解释器为了识别位置参数和命名关键字参数，在没有可变参数的时候，必须加一个* 作为特殊分隔符
+                        参数组合：参数定义的位置顺序：必选参数（位置参数）、默认参数、可变参数、命名关键字参数、关键字参数
+                                        函数调用：解释器会自动按照参数的位置和参数名把对应的参数传进去
+                                       对应任意函数，都可以通过func（*args，**kw）的形式调用它
+         递归函数  fact（n）
+ 	        n太大，会造成栈溢出，解决：尾递归       
+                       def fact(n):
+                             return fact_iter(n, 1)
+                       def fact_iter(num, product):
+                             if num == 1:
+                                   return product
+                             return fact_iter(num - 1, num * product)        
+ 第三章 高级特性
+         切片 Slice 实现对list/tuple的截取 L[begin:end:step] 正取是从0开始，倒取从-1开始
+         迭代 只要for循环作用在一个可迭代对象上，就可以用for ......in......迭代
+                 dict迭代：
+                        for key in d:(默认迭代的是key)
+                        for value in d.values( )(迭代 value)
+                        for k,v in d.items(同时迭代key和value )
+                 判断对象可迭代： collections模块的Iterable
+		            >>> from collections import Iterable
+                                            >>> isinstance('abc', Iterable) # str是否可迭代
+                                                    True
+                                            >>> isinstance([1,2,3], Iterable) # list是否可迭代
+                                                    True
+                                            >>> isinstance(123, Iterable) # 整数是否可迭代
+                                                    False
+                 实现下标循环 ：python内置enumerate函数把list变成索引-元素
+                                            >>>  for i,value in enumerate(['A','B','V']):
+			              print(i,value)
+			             0 A
+                                                             1 B
+                                                             2 V
+		   
+         列表生成器
+                                  1.生成 list[1,2,3,4,5,6,7,8,9,10]-->list(range(1,11))
+                                  2.生成list[1*1,2*2,3*3,...10*10]-->[x*x for x in range(1,11)]
+                                  3.生成list[2*2,4*4 6*6,...10*10]-->[x*x for x in range(1,11) if x%2 ==0]
+                                  4.使用两层循环，生成全排列['AX','AY','AZ','BX','BY','BZ','CX','CY','CZ']
+                                                                              -->[m+n for m in 'ABC' for n in 'XYZ']
+	                  5.列出当前目录下的所有文件和目录名-->  >>> import os
+                                                                                               >>>[d for d in os.listdir('.')]
+                                  6.使用两个变量生成list       -->  >>> d = {'x': 'A', 'y': 'B', 'z': 'C' }
+                                                                                          [k+'='+v for k,v in d.items()]
+                                                                                 >>>['y=B', 'x=A', 'z=C']
+                                  7.把一个list中所有的字符串变成小写 ---> >>>L=['Hello','World','IBM','Apple']
+                                                                                               >>>[s.lower() for s in L]
+         生成器 (generator)
+		      解决列表内存受限的问题 ，一种一边循环一边计算的机制
+                                      创建生成器:    1.g = (x * x for x in range(10))
+			             调用generator >>>for n in g:
+                                                                                    >>>   print(n)
+ 			           2. 在函数中  定义yield关键字
+ 				              next（）获得下一个返回值
+                                                                              捕获StopIteration获得 generator里的return语句的返回值
+                                                                              generator函数的“调用”实际返回一个generator对象
+                                                                                      
+         迭代器              1.Iterable（可迭代对象）类型：可直接作用在for循环的数据型，表示一个惰性计算的序列，提前不知道其长度，可表示无限大的数据流
+                                                         （1）集合数据类型：list、tuple、dict、set、str
+		                         （2）generator：生成器、带yield的generator function
+                                  判断Iterable：isinstance(  ,  Iterable)
+                                2.Iterator(迭代器)类型：可被next()函数调用，并不断返回下一个值的对象 
+                                                           (1)一切生成器
+		  判断Iterator：isinstance(  ,  Iterator)
+
+第四章 函数式编程 
+       特点：允许把函数本身作为参数传入另一个函数，还允许返回一个函数
+       高阶函数：把函数作为参数传入的函数
+                （1）变量可以指向函数，变量指向函数本身后，可以通过这个变量来调用函数
+                （2）函数名是指向函数的变量
+	map/reduce：
+                 （1）map(f(函数对象本身)，Iterable)：将传入的函数依次作用在序列的每个元素上，把结果作为新的Iterator返回
+                         eg：把list中所有的数字转为字符串   list(map(str,[1,2,3,4,5,6,7,8,]))
+                   (2)  reduce(f(函数), x[x1,x2,x3,...]):把一个函数作用在一个序列上，每一次reduce将结果继续和下一个元素进行县官运算
+                filter ：过滤序列，接受一个函数和一个序列，把传入的函数依次作用在每个元素，然后根据返回值是True和False决定保留还是丢弃
+                           函数返回时Iterator（惰性序列），用filter计算时，需要用list()函数获得所有结果。并返回list
+                sorted：sorted（[ ]，Key）:key指定的函数作用在list每一个函数上，并根据key的函数返回结果进行排列
+       返回函数：
+                函数可以作为返回值
+       匿名函数：
+                lambda 参数: 表达式 --->  lambda x: x*x
+       装饰器（decorator） :在代码装饰运行期间动态增加功能的方式，本质是返回函数的高阶函数。好处;不用更改原函数的代码前提下给函数增加新的功能
+       偏函数  (Partial function): functools.partial():把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数
+第五章  模块 
+        对函数进行分组，易于管理
+        利用包（Package）来解决模块名称相同的问题，包和普通的目录区别:每一个包的目录下有一个 __init__.py文件
+第六章 面向对象编程（OOP）
+        把对象（包含数据和操作数据的函数）作为程序的基本单元，抽象出class，根据class创建Instance
+        特点：封装、继承、多态
+        类和实例：类是抽象的一种模板 ：
+                                    class 类名(object)：
+                                          pass
+                        实例是根据类创建出的具体对象：
+                                     bart = 类名（）
+                        数据封装：在类的内部定义访问数据的函数，将这些函数称之为类的方法，类的方法可以直接访问实例数据
+        访问限制    __属性名称：私有变量，外部无法访问
+                        增加get__属性名方法，用于外部获取内部数据
+                        增加set__属性名方法，允许外部修改内部数据
+                        特殊，__xxx__ 类似的变量名，可以直接访问，不是private
+                                  _xxx     类似的变量名，可以被外部访问，但是约定俗成，将其看成私有变量，不要随意访问
+                                  __xxx   类似的变量名，私有变量，不能被外部访问，因为python解释器对外部把__xxx 变量变成
+                                  _类名__xxx，所以可以通过：实例变量名称._类名__xxx来访问，但是最好不要这么做
+        继承和多态
+                       继承：定义一个新类，同时想要获得旧类（base/super class）的数据和属性
+                       多态：一个接口，对于不同子类有不同结果，允许新增父类的子类，不需要修改依赖父类的方法
+                       静态语言vs动态语言： 
+                                静态语言：如果需要传入某一类型，则传入的对象必须是这个类类型或者是他的子类，这样才能调用其内部的方法
+                                动态语言：只需要保证，传入的对象内有这个方法就可以了（动态语言的鸭子类型）
+        获取对象信息
+                      使用 type() 返回对应的class类型
+                                                 判断一个对象是否是函数,使用types模块中定义的常量
+                                                 type(fn/abs/lambdx x: x/(x for x in range(10))) == types.FunctionType/BuiltinFunctionType/LambdaType/GeneratorType
+                      使用isinstance()：对于class的继承关系，判断class的类型
+                                                 判断一个变量是否是某一类型中的一种:eg  isinstance（[1,2,3,4],(list,tuple)）
+                      使用dir()：获得一个对象的所有属性和方法，返回一个包含字符串的list
+       
+
+        实例属性和类属性
+                     给实例绑定属性：通过实例变量或者self变量
+                     给类本身绑定属性：在class中定义属性（类属性）
+                     定制类例属性和类属性使用相同的名字，当你删除实例属性后（del s.name），再使用相同的名称，访问到的将是类属性
+第七章 面向对象高级编程
+        使用__slots__    
+                     利用这个变量，在定义class的时候限制class实例动态添加属性    
+                             class Student(object):
+                                      __slots__ = ('name', 'age') # 用tuple定义允许绑定的属性名称
+                      __slots__定义的属性仅对当前类实例起作用，对继承的子类是不起作用
+                     除非在子类中也定义__slots__，这样，子类实例允许定义的属性就是自身的__slots__加上父类的__slots__
+       使用@property  @property装饰器就是负责把一个方法变成属性调用 把getter方法变成属性
+                                @xxx.setter  将setter方法变成属性赋值
+                     
+       多重继承 利用多重继承，一个子类就可以获得多个父类的所有功能
+                     MixIn目的：给一个类增加多个功能，优先考虑多重继承来组合多个MixIn的功能，而不是多层次的复杂继承关系
+                     python继承顺序遵循C3算法，只要在一个地方找到了所需的内容，就不再继续查找
+       定制类  类似__xxx__的变量或者函数名，这些在python中有特殊的用途
+                    __len__( )：让class能够作用于len()函数
+                    __str__( ):  返回好看的字符串，返回的是用户看到的字符串
+                    __repr__( ):返回程序开发者看到的字符串，其是为调试服务的
+                    一般直接显示变量（不用print）调用的是__repr__(),一般其与__str__()的代码一样，偷懒：__repr__ = __str__
+                    __iter__( ) : 一个类想要被用于for....in循环，必须实现一个__iter__()方法，该方法返回一个迭代对象，
+                                    python的for循环就会不断调用该迭代对象的__next__( )方法拿到下一个值，直到遇到StopIteration错误时退出循环
+                     __getitem__():让类像list一样按照下标取出元素
+                     __getattr__():动态返回一个属性
+                     __call__( ): 直接对实例进行调用   
+                                     一般一个对象实例可以有自己的属性和方法，当我们调用实例方法时，我们用 instance.method()来调用
+                     callable():查看一个对象能否被调用
+       使用枚举类  from enum import Enum  用Enum类来实现常量的定义
+       使用元类     type()函数:可以查看一个类型或变量的类型,也可以动态创建出新的类型
+                                        要创建一个class对象，type( )函数一次传入3个参数
+                                                                                 （1）class的名称
+				                 （2）继承的父类集合（xx,）or (xx,xxx,xxx) 用tuple表示多重继承
+                                                                                 （3）class的方法名称与函数绑定 dict(class名称=函数名称）
+                        metaclass: 想要定义类的时候，可以先定义元类，他可以改变创建类的行为
