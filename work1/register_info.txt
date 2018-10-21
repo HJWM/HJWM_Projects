@@ -6,6 +6,4 @@ FZ done  之前将廖雪峰的python3教程都看过，上传了代码以及学�
 WHB done	人生苦短，我用python
 mry done
 YLY done ...
-10.13 19.27 1by
-10.13 19.25
-10.13 19.12
+GBJ done
