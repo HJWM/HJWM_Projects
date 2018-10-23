@@ -1,0 +1,16 @@
+/* example/activity_room/index.wxss */
+.title{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50rpx 0;
+  box-sizing: border-box;
+}
+.itemwxs{
+  padding: 0;
+}
+.add{
+  padding: 100rpx;
+}

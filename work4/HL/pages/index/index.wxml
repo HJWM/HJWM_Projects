@@ -1,0 +1,20 @@
+<!--example/activity_room/index.wxml-->
+<view class="page">
+    <view class='title'>
+        <view>预约结果</view>
+    </view>
+    <view class="page__bd itemwxs" wx:for="{{array}}">
+        <view class="weui-cells__title">{{item.date}}</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view id="{{index}}" class="weui-cell" bindtap='openToast'>
+                <view class="weui-cell__bd">{{item.begin_time}}-{{item.end_time}}</view>
+                <view class="weui-cell__ft">{{item.department}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='add'>
+  <button class="weui-btn" type="primary" plain="true" bindtap='addinfo'>添加预约</button>
+</view>
+
+
