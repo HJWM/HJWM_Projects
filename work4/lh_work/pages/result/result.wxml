@@ -1,0 +1,20 @@
+<view class="order_result">预约结果</view>
+
+<block wx:for="{{finaldata}}" wx:for-index="cixu" wx:for-item="min">
+   <view class="weui-cells__title">{{min.orderdate}}</view>
+   <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">{{min.starttime}}-{{min.endtime}}</view>
+                </view>
+                <view class="weui-cell__bd"></view>
+                <view class="weui-cell__ft">
+                   <view>{{min.department}}</view>
+                </view>
+            </view>
+    </view>
+</block>
+
+
+
+<image bindtap="yuyue" src="../../img/login.png" class="login_img"></image>

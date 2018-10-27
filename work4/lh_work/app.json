@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/result/result",
+    "pages/order/order",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#80d5d4",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "活动室预约",
+    "backgroundColor": "63a6a5",
+    "backgroundTextStyle": "light"
+  }
+}

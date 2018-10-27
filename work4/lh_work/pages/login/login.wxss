@@ -1,0 +1,5 @@
+/* pages/login/login.wxss */
+.sure_btn{
+  width:90%;
+  background-color:#80d5d4!important;
+}
