@@ -1,0 +1,14 @@
+.order_result{
+  height:246rpx;
+  text-align: center;
+  line-height:246rpx;
+  font-size:50rpx;
+  color:#000;
+}
+.login_img{
+  width:100rpx;
+  height:100rpx;
+  position:fixed;
+  bottom:25rpx;
+  right:25rpx;
+}

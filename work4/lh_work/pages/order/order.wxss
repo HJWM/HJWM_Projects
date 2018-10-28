@@ -1,0 +1,19 @@
+/* pages/order/order.wxss */
+.order_header{
+  height:246rpx;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.order_header_first{
+  font-size:50rpx;
+}
+.order_header_second{
+  font-size:30rpx;
+  color:#333;
+}
+.sure_btn{
+  width:90%;
+  background-color:#80d5d4!important;
+}
