@@ -1,0 +1,16 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/showInfo/showInfo",
+    "pages/orderClass/orderClass",
+    "pages/register/register",
+    "pages/user/user"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#BBFFFF",
+    "navigationBarTitleText": "小王的小程序",
+    "navigationBarTextStyle":"black"
+  }
+}

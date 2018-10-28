@@ -1,0 +1,42 @@
+.show-container{
+  padding-top:20rpx;
+  height:100%;
+  margin:0 10px;
+}
+
+.title-css{
+width: 100%;
+height: 200rpx;
+text-align: center;
+line-height: 200rpx;
+}
+
+.show-item-left{
+  float:left;
+  width:60%;
+}
+
+.show-item-right{
+  float:right;
+  width:40%;
+}
+
+.button-class{
+width: 60px;
+height: 40px;
+margin: 0px;
+padding: 0px;
+background-color:#FFFFFF;
+}
+
+.button-class::after{
+border:none;
+}
+
+.image-increase{
+  width:80px;
+  height:100px;
+  right: 0rpx;
+  bottom: 0rpx;
+  position: fixed;
+}
