@@ -1,0 +1,8 @@
+<!--index.wxml-->
+
+<view class="container">
+ <view class="huawei-image">
+  <image style='width: 200px;height: 200px;' mode="{{mode}}" src="{{src}}"></image>
+ </view>
+ <button type="primary" size='{{primarySize}}' loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="showInfo" >活动室预约</button>
+</view>

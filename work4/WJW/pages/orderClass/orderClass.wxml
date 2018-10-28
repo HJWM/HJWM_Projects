@@ -1,0 +1,29 @@
+<!--pages/orderClass/orderClass.wxml-->
+<view class="page">
+  <view class="title-css">
+    登记个人信息
+  </view>
+  <view class="page__hd">
+    <rich-text class="page__desc" style="font-size:14px;">部门</rich-text>
+  </view>
+  <view class="page__bd">
+    <view class="section section_gap">
+      <radio-group class="radio-group" bindchange="radioChange">
+        <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+          <text>{{item.value}}</text>
+        </radio>
+      </radio-group>
+    </view>
+  </view>
+  <view class="page__hd radio-group">
+    <rich-text class="page__desc" style="font-size:14px;">姓名</rich-text>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="section input-c">
+      <input type='text' placeholder="请输入姓名" name="ordername"/>
+    </view>
+    <view class="btn-area">
+     <button form-type='submit'>确定</button>
+    </view>
+  </form>
+</view>

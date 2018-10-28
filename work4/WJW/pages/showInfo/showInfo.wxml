@@ -1,0 +1,21 @@
+<!--pages/showInfo/showInfo.wxml-->
+<view class="show-container">
+  <view class="title-css">
+    预约结果
+  </view>
+  <view wx:for="{{arr}}" wx:for-item="item" style="display:flex;">
+    <view bindtap='showok' style="width:100%;height:100%;" data-reason="{{item.reason}}" data-depart="{{item.depart}}" data-time='{{item.time}}'>
+      <view class="show-item-left">预约时间:
+        <text>{{item.start}}-{{item.end}}</text>
+      </view>
+      <view class="show-item-right">预约人:
+        <text>{{item.username}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="image-increase">
+    <navigator class='button-class' url="/pages/orderClass/orderClass">
+      <image style="width:40px;height:40px;" src="{{src}}" mode='{{mode}}' bindtap='loadInfo'></image>
+    </navigator>
+  </view>
+</view>

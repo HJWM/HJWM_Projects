@@ -1,0 +1,27 @@
+<!--pages/register/register.wxml-->
+<form bindsubmit="registerNum">
+  <view class="title-css">
+    <text decode="{{true}}">{{depart}}&nbsp;&nbsp;</text><text style="font-size:10px">{{name}}</text>
+  </view>
+  <view class='row'>
+    <view class='info'>
+      <input class='info-input' name="time" placeholder="预约日期" />
+    </view>
+  </view>
+  <view class='row'>
+    <view class='info'>
+      <input type='text' name="start" class='info-input' placeholder="开始时间" />
+    </view>
+  </view>
+  <view class='row'>
+    <view class='info'>
+      <input type='text' name="end" class='info-input' placeholder="结束时间" />
+    </view>
+  </view>
+  <view class='row'>
+    <view class='info'>
+      <input type='text' name="reason" class='info-input' placeholder="预约原因" />
+    </view>
+  </view>
+  <button form-type='submit' class="button">提交</button>
+</form>

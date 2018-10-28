@@ -1,0 +1,14 @@
+<!--pages/user/user.wxml-->
+<form bindsubmit="userNum">
+    <view class='row'>
+      <view class='info'>
+        <input class='info-input' name="name" placeholder="姓名" />
+      </view>
+    </view>
+    <view class='row'>
+      <view class='info'>
+        <input type='text' name="sort" class='info-input' placeholder="部门" />
+      </view>
+    </view>
+    <button form-type='submit' class="button" disabled="{{disabled}}" bindtap='disableButton'>提交</button>
+</form>
