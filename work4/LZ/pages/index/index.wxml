@@ -1,0 +1,7 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <view class="reservation">
+     <image bindtap="bindTaptoReservation" class="reversationImage" src="../../utils/images/reservation.jpg"></image>
+     <text class="reversationText">活动室预约</text>
+  </view>
+</view>

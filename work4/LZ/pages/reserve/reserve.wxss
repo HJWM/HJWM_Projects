@@ -1,0 +1,41 @@
+/* pages/reverse/reverse.wxss */
+.container{
+  width: 100%;
+  padding: 20rpx 0;
+  align-items: flex-start;
+}
+#reserveTitle, .reserveInfo{
+  align-self: center;
+}
+.reserveInfo{
+  width:100%;
+  margin-top:100rpx;
+}
+.result{
+  width: 100%;
+  margin-top: 100rpx;
+}
+.section{
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx;
+  padding: 20rpx;
+  border-bottom: 1rpx solid grey;
+}
+.title{
+  font-size: 35rpx;
+}
+.picker{
+  font-size: 35rpx;
+  color: grey;
+  text-align:right;
+}
+button{
+  margin: 20rpx;
+  background-color: #83D5D3;
+  font-size: 30rpx;
+  color: white;
+}
+input{
+  width: 300rpx;
+}

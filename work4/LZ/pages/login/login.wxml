@@ -1,0 +1,18 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <text id="loginTitle">登记个人信息</text>
+  <form bindsubmit="formSubmit">
+    <view id="radioGroupName">部门</view>
+    <view class="radio-group">
+      <label for="department" bindtap="radioSelect" wx:for="{{radioValue}}" data-id="{{item.id}}">
+        <text data-id="{{item.id}}">{{item.department}}</text>
+        <icon wx:if="{{item.isSelect}}" type="success_no_circle" size="12"></icon>
+      </label>
+    </view>
+    <view id="inputName">姓名</view>
+    <view class="input">
+      <input name="name" placeholder="请输入姓名" placeholder-class="placeholder"/>
+    </view>
+    <view><button form-type="submit">确定</button></view>
+  </form>
+</view>
