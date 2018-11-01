@@ -1,0 +1,15 @@
+<!--result.wxml-->
+<view class="container">
+  <text id="resultTitle">预约结果</text>
+  <view class="result" wx:for="{{reserveInfo}}">
+    <view class="resultDate" wx:if="{{item.date}}">
+      <text id="date">{{item.date}}</text>
+    </view>
+    <view class="resultInfo" bindtap="showReason" data-name="{{item.name}}" data-reason="{{item.reason}}" wx:if="{{item.startTime}}">
+      <text id="time">{{item.startTime}} - {{item.endTime}}</text>
+      <text id="department">{{item.department}}</text>
+    </view>
+  </view>
+  <!--这个加号肯定不该这么实现-->
+  <view id="add" bindtap="bindtoReserve"><text>+</text></view>
+</view>

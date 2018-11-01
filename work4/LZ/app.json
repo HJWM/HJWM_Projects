@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/result/result",
+    "pages/reserve/reserve",
+    "pages/login/login",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#83D5D3",
+    "navigationBarTitleText": "西电华为创新俱乐部",
+    "navigationBarTextStyle":"black"
+  }
+}

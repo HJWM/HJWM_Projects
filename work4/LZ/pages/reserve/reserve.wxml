@@ -1,0 +1,48 @@
+<!--pages/reverse/reverse.wxml-->
+<view class="container">
+  <text id="reserveTitle">活动室预约</text>
+  <view class="reserveInfo">
+    <!--姓名-->
+    <view class="section">
+      <text class="title">姓　　名</text>
+      <input class="picker" value="{{name}}" placeholder="请输入姓名" bindinput="nameChange"/>
+    </view>
+    <!--部门-->
+    <view class="section">
+      <text class="title">部　　门</text>
+      <picker mode="selector" range="{{department}}" value="{{index1}}" bindchange="departmentChange">
+        <view class="picker">{{department[index1]}}</view>
+      </picker> 
+    </view>
+    <!--原因-->
+    <view class="section">
+      <text class="title">原　　因</text>
+      <picker mode="selector" range="{{reason}}" value="{{index2}}" bindchange="reasonChange">
+        <view class="picker">{{reason[index2]}}</view>
+      </picker> 
+    </view>
+    <!--日期-->
+    <view class="section">
+      <text class="title">预约日期</text>
+      <picker mode="date" value="date" start="2018-10-29" bindchange="dateChange">
+        <view class="picker">{{date}}</view>
+      </picker> 
+    </view>
+    <!--开始时间-->
+    <view class="section">
+      <text class="title">开始时间</text>
+      <picker mode="time" value="{{startTime}}" start="00:00" end="23:59" bindchange="startTimeChange">
+        <view class="picker">{{startTime}}</view>
+      </picker> 
+    </view>
+    <!--结束时间-->
+    <view class="section">
+      <text class="title">结束时间</text>
+      <picker mode="time" value="{{endTime}}" start="00:00" end="23:59" bindchange="endTimeChange">
+        <view class="picker">{{endTime}}</view>
+      </picker> 
+    </view>
+    <!--提交按钮-->
+    <view bindtap="submit"><button>确定</button></view>
+  </view>
+</view>
