@@ -26,4 +26,3 @@
 | FZ_NB | 83.114 | outline |
 | FZ_PCA&KNN | 97.242 | outline |
 | FZ_PCA&SVM | 98.185 | outline |
-
