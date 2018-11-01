@@ -23,4 +23,6 @@
 # 已提交结果
 | 姓名首字母 | 得分(%) | kaggle kernel url |
 | :------: | :------: | :------: |
-| - | -  | -  |
+| FZ_NB | 0.83114 | outline |
+| FZ_PCA&KNN | 0.97242 | outline |
+| FZ_PCA&SVM | 0.98185 | outline |
